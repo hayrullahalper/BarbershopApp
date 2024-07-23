@@ -1,20 +1,28 @@
-import 'package:barbershopapp/screens/home_screen.dart';
+import 'package:barbershopapp/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(BarbershopApp());
 }
 
-class MyApp extends StatelessWidget {
+class BarbershopApp extends StatelessWidget {
+  const BarbershopApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Barbershop App',
+      title: 'Barbershop',
       theme: ThemeData(
-        textTheme: GoogleFonts.robotoCondensedTextTheme(),
-      ),
-      home: HomeScreen(),
+          primarySwatch: Colors.grey,
+          fontFamily: 'Poppins',
+          appBarTheme: AppBarTheme.of(context).copyWith(
+            elevation: 0,
+            scrolledUnderElevation: 0,
+            shadowColor: Colors.white,
+            backgroundColor: Colors.white,
+          ),
+          scaffoldBackgroundColor: Colors.white),
+      home: WelcomeScreen(),
     );
   }
 }

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "504414325498",
+    "project_id": "barber-apppointment",
+    "storage_bucket": "barber-apppointment.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:504414325498:android:643db106ba99f9e3aed743",
+        "android_client_info": {
+          "package_name": "com.metacortx.barbershopapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJmQ2NtbcL8RNpMeKycg3vmpbuJWZlNl0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
