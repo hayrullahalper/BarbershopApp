@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'login_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
+  const WelcomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,10 +18,10 @@ class WelcomeScreen extends StatelessWidget {
             Hero(
                 tag: "barberlogo",
                 child: Image.asset('assets/images/logo.png', height: 225)),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             CustomButton(
               text: "Login",
-              fontSize: 24,
+              fontSize: 20,
               onPressed: () {
                 Navigator.push(
                   context,
@@ -27,10 +29,10 @@ class WelcomeScreen extends StatelessWidget {
                 );
               },
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             CustomButton(
               text: "Register",
-              fontSize: 24,
+              fontSize: 20,
               onPressed: () {
                 Navigator.push(
                   context,

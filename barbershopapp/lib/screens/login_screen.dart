@@ -1,5 +1,6 @@
 import 'package:barbershopapp/components/custom_button.dart';
 import 'package:barbershopapp/components/custom_input_field.dart';
+import 'package:barbershopapp/components/custom_text_button.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -31,22 +32,17 @@ class LoginScreen extends StatelessWidget {
                           child: Image.asset('assets/images/logo.png',
                               height: 175)),
                       SizedBox(height: 20),
-                      CustomInputField(labelText: "Phone Number"),
-                      SizedBox(height: 20),
-                      CustomInputField(labelText: "Password"),
-                      SizedBox(height: 10),
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: TextButton(
-                          onPressed: () {
-                            // Handle forgot password
-                          },
-                          child: Text(
-                            'Forgot Password?',
-                            style: TextStyle(color: Colors.black),
-                          ),
-                        ),
+                      CustomInputField(
+                        labelText: "Phone Number",
+                        isPhoneNumber: true,
                       ),
+                      SizedBox(height: 20),
+                      CustomInputField(
+                        labelText: "Password",
+                        isPassword: true,
+                      ),
+                      SizedBox(height: 10),
+                      CustomTextButton(text: "Forgot Password?"),
                       SizedBox(height: 20),
                       CustomButton(
                           text: "Login", fontSize: 20, onPressed: () {}),

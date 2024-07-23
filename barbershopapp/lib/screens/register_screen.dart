@@ -1,5 +1,6 @@
 import 'package:barbershopapp/components/custom_button.dart';
 import 'package:barbershopapp/components/custom_input_field.dart';
+import 'package:barbershopapp/components/custom_text_button.dart';
 import 'package:barbershopapp/screens/verify_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -23,7 +24,7 @@ class RegisterScreen extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  const Text(
+                  Text(
                     textAlign: TextAlign.left,
                     'REGISTER',
                     style: TextStyle(
@@ -36,21 +37,24 @@ class RegisterScreen extends StatelessWidget {
                   CustomInputField(labelText: "First Name"),
                   SizedBox(height: 10),
                   CustomInputField(labelText: "Last Name"),
-                  const SizedBox(height: 10),
-                  CustomInputField(labelText: "Phone Number"),
-                  const SizedBox(height: 10),
-                  CustomInputField(labelText: "Password"),
-                  const SizedBox(height: 10),
-                  CustomInputField(labelText: "Confirm Password"),
-                  const SizedBox(height: 20),
-                  TextButton(
-                    onPressed: () {},
-                    child: const Text(
-                      'Already Have an Account?',
-                      style: TextStyle(color: Colors.black),
-                    ),
+                  SizedBox(height: 10),
+                  CustomInputField(
+                    labelText: "Phone Number",
+                    isPhoneNumber: true,
                   ),
-                  const SizedBox(height: 10),
+                  SizedBox(height: 10),
+                  CustomInputField(
+                    labelText: "Password",
+                    isPassword: true,
+                  ),
+                  SizedBox(height: 10),
+                  CustomInputField(
+                    labelText: "Confirm Password",
+                    isPassword: true,
+                  ),
+                  SizedBox(height: 10),
+                  CustomTextButton(text: "Already Have an Account?"),
+                  SizedBox(height: 10),
                   CustomButton(
                     text: "Register",
                     onPressed: () {

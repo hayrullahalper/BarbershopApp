@@ -23,6 +23,7 @@ class BarbershopApp extends StatelessWidget {
           ),
           scaffoldBackgroundColor: Colors.white),
       home: WelcomeScreen(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }

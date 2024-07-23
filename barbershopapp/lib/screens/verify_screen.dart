@@ -1,6 +1,10 @@
+import 'package:barbershopapp/components/custom_button.dart';
+import 'package:barbershopapp/components/custom_otp_box.dart';
 import 'package:flutter/material.dart';
 
 class VerifyScreen extends StatefulWidget {
+  const VerifyScreen({super.key});
+
   @override
   _VerifyScreenState createState() => _VerifyScreenState();
 }
@@ -35,7 +39,7 @@ class _VerifyScreenState extends State<VerifyScreen> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -47,66 +51,50 @@ class _VerifyScreenState extends State<VerifyScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Icon(
-                Icons.phone_android,
-                size: 100,
-                color: Colors.black,
+              Flexible(
+                child: Image.asset(
+                  "assets/images/phono.avif",
+                  height: 125,
+                ),
               ),
-              SizedBox(height: 20),
-              Text(
+              const SizedBox(height: 20),
+              const Text(
                 'Verify Your Mobile Number',
                 style: TextStyle(
                   fontFamily: 'Poppins',
                   fontSize: 20,
                 ),
               ),
-              SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  _buildOtpBox(_otpController1, _otpFocusNode1, _otpFocusNode2),
-                  _buildOtpBox(_otpController2, _otpFocusNode2, _otpFocusNode3),
-                  _buildOtpBox(_otpController3, _otpFocusNode3, _otpFocusNode4),
-                  _buildOtpBox(_otpController4, _otpFocusNode4, null),
-                ],
+              const SizedBox(height: 15),
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Flexible(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      CustomOTPBox(
+                          _otpController1, _otpFocusNode1, _otpFocusNode2),
+                      CustomOTPBox(
+                          _otpController2, _otpFocusNode2, _otpFocusNode3),
+                      CustomOTPBox(
+                          _otpController3, _otpFocusNode3, _otpFocusNode4),
+                      CustomOTPBox(_otpController4, _otpFocusNode4, null),
+                    ],
+                  ),
+                ),
               ),
-              SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {
-                  // Handle OTP verification
-                },
-                child: Text('Verify'),
+              const SizedBox(height: 15),
+              Flexible(
+                child: CustomButton(
+                  text: "Verify",
+                  fontSize: 18,
+                  onPressed: () {},
+                ),
               ),
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _buildOtpBox(TextEditingController controller, FocusNode currentFocus,
-      FocusNode? nextFocus) {
-    return SizedBox(
-      width: 50,
-      child: TextField(
-        controller: controller,
-        focusNode: currentFocus,
-        decoration: InputDecoration(
-          counterText: "", // Remove the 0/1 counter
-          border: OutlineInputBorder(),
-        ),
-        keyboardType: TextInputType.number,
-        textAlign: TextAlign.center,
-        style: TextStyle(
-          fontFamily: 'Poppins',
-          fontSize: 24,
-        ),
-        maxLength: 1,
-        onChanged: (value) {
-          if (value.length == 1 && nextFocus != null) {
-            FocusScope.of(context).requestFocus(nextFocus);
-          }
-        },
       ),
     );
   }
