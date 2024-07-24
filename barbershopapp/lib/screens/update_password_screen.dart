@@ -1,11 +1,12 @@
-import 'package:barbershopapp/components/custom_button.dart';
-import 'package:barbershopapp/components/custom_input_field.dart';
-import 'package:barbershopapp/components/custom_text_button.dart';
 import 'package:barbershopapp/screens/login_screen.dart';
-import 'package:barbershopapp/screens/verify_screen.dart';
 import 'package:flutter/material.dart';
 
-class RegisterScreen extends StatelessWidget {
+import '../components/custom_button.dart';
+import '../components/custom_input_field.dart';
+
+class UpdatePasswordScreen extends StatelessWidget {
+  const UpdatePasswordScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,21 +28,12 @@ class RegisterScreen extends StatelessWidget {
                 children: <Widget>[
                   Text(
                     textAlign: TextAlign.left,
-                    'REGISTER',
+                    'Set New Password',
                     style: TextStyle(
                       fontFamily: 'Poppins',
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                     ),
-                  ),
-                  SizedBox(height: 20),
-                  CustomInputField(labelText: "First Name"),
-                  SizedBox(height: 10),
-                  CustomInputField(labelText: "Last Name"),
-                  SizedBox(height: 10),
-                  CustomInputField(
-                    labelText: "Phone Number",
-                    isPhoneNumber: true,
                   ),
                   SizedBox(height: 10),
                   CustomInputField(
@@ -53,25 +45,16 @@ class RegisterScreen extends StatelessWidget {
                     labelText: "Confirm Password",
                     isPassword: true,
                   ),
-                  SizedBox(height: 10),
-                  CustomTextButton(
-                    text: "Already Have an Account?",
+                  SizedBox(
+                    height: 20,
+                  ),
+                  CustomButton(
+                    text: "Update Password",
                     onPressed: () {
-                      Navigator.pop(context);
                       Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) => LoginScreen()));
-                    },
-                  ),
-                  SizedBox(height: 10),
-                  CustomButton(
-                    text: "Register",
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => VerifyScreen()));
                     },
                     padding: EdgeInsets.zero,
                     fontSize: 20,
