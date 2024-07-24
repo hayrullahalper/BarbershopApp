@@ -1,3 +1,6 @@
+import 'package:barbershopapp/Barber.dart';
+
+import 'Barbershop.dart';
 import 'appointment.dart';
 
 List<Appointment> appointments = [
@@ -13,4 +16,19 @@ List<Appointment> appointments = [
       "33 yo barber with 35 years of experience"),
   Appointment("A Barbershop", "Sammy", "19.07.2024 - 13:00",
       "33 yo barber with 35 years of experience"),
+];
+
+List<Barbershop> barbershops = [
+  Barbershop("X Barbershop"),
+  Barbershop("Y Barbershop"),
+  Barbershop("Z Barbershop"),
+  Barbershop("T Barbershop"),
+];
+
+List<Barber> barbers = [
+  Barber("Ally", "33 yo barber with 35 years of experience"),
+  Barber("Velly", "33 yo barber with 35 years of experience"),
+  Barber("Delly", "33 yo barber with 35 years of experience"),
+  Barber("Mahmood", "33 yo barber with 35 years of experience"),
+  Barber("Sammy", "33 yo barber with 35 years of experience"),
 ];
