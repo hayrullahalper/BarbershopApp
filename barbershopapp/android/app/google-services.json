@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:504414325498:android:643db106ba99f9e3aed743",
+        "mobilesdk_app_id": "1:504414325498:android:dc93011ec6234dceaed743",
         "android_client_info": {
-          "package_name": "com.metacortx.barbershopapp"
+          "package_name": "com.metacortx.barbershop"
         }
       },
       "oauth_client": [],
