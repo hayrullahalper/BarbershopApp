@@ -1,7 +1,7 @@
-import 'package:barbershopapp/Barber.dart';
+import 'package:barbershopapp/models/barber.dart';
 
-import 'Barbershop.dart';
-import 'appointment.dart';
+import '../models/appointment.dart';
+import '../models/barbershop.dart';
 
 List<Appointment> appointments = [
   Appointment("X Barbershop", "Mahmood", "17.07.2024 - 10:00",

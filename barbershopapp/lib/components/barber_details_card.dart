@@ -1,4 +1,4 @@
-import 'package:barbershopapp/Barber.dart';
+import 'package:barbershopapp/models/barber.dart';
 import 'package:flutter/material.dart';
 
 class BarberDetailsCard extends StatelessWidget {
@@ -45,6 +45,9 @@ class BarberDetailsCard extends StatelessWidget {
           ),
           Column(
             children: [
+              SizedBox(
+                height: 15,
+              ),
               Container(
                 width: 200,
                 child: Text(

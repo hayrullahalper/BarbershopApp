@@ -1,8 +1,8 @@
 import 'package:barbershopapp/components/custom_button.dart';
-import 'package:barbershopapp/screens/register_screen.dart';
+import 'package:barbershopapp/screens/auth/register_screen.dart';
 import 'package:flutter/material.dart';
 
-import 'login_screen.dart';
+import 'auth/login_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});

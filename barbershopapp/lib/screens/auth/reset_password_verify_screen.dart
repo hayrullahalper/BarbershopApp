@@ -1,6 +1,6 @@
 import 'package:barbershopapp/components/custom_button.dart';
 import 'package:barbershopapp/components/custom_otp_box.dart';
-import 'package:barbershopapp/screens/update_password_screen.dart';
+import 'package:barbershopapp/screens/auth/update_password_screen.dart';
 import 'package:flutter/material.dart';
 
 class ResetPasswordVerifyScreen extends StatefulWidget {

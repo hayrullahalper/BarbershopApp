@@ -1,6 +1,6 @@
-import "package:barbershopapp/screens/appointments_screen.dart";
-import "package:barbershopapp/screens/prev_appointments_screen.dart";
-import "package:barbershopapp/screens/search_screen.dart";
+import "package:barbershopapp/screens/appointment/appointments_screen.dart";
+import "package:barbershopapp/screens/appointment/prev_appointments_screen.dart";
+import "package:barbershopapp/screens/appointment/search_screen.dart";
 import "package:flutter/material.dart";
 
 import "../components/custom_card.dart";

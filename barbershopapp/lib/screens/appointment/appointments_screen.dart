@@ -1,14 +1,10 @@
-import 'package:barbershopapp/Barbershop.dart';
-import 'package:barbershopapp/components/barber_details_card.dart';
-import 'package:barbershopapp/screens/appointment_schedular_screen.dart';
+import 'package:barbershopapp/components/appointment_details_card.dart';
+import 'package:barbershopapp/data/mock_data.dart';
+import 'package:barbershopapp/screens/appointment/appointment_detail_screen.dart';
 import 'package:flutter/material.dart';
 
-import '../mock_data.dart';
-
-class ChooseBarberScreen extends StatelessWidget {
-  final Barbershop barbershop;
-
-  const ChooseBarberScreen({super.key, required this.barbershop});
+class AppointmentsScreen extends StatelessWidget {
+  const AppointmentsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,10 +25,11 @@ class ChooseBarberScreen extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.only(left: 8.0),
               child: Align(
-                alignment: Alignment.center,
+                alignment: Alignment.topLeft,
                 child: Text(
-                  "Choose Barber",
+                  "Appointments",
                   style: TextStyle(fontSize: 22, fontWeight: FontWeight.normal),
+                  textAlign: TextAlign.left,
                 ),
               ),
             ),
@@ -41,17 +38,17 @@ class ChooseBarberScreen extends StatelessWidget {
             ),
             Expanded(
               child: ListView.builder(
-                itemCount: barbers.length,
+                itemCount: appointments.length,
                 itemBuilder: (context, index) {
-                  return BarberDetailsCard(
+                  return AppointmentDetailsCard(
                     onPressed: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) =>
-                                  AppointmentSchedulerScreen()));
+                              builder: (context) => AppointmentDetailScreen(
+                                  appointment: appointments[index])));
                     },
-                    barber: barbers[index],
+                    appointment: appointments[index],
                   );
                 },
               ),

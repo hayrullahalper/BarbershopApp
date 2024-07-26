@@ -2,7 +2,7 @@ import 'package:barbershopapp/components/appointment_detail_with_photo.dart';
 import 'package:barbershopapp/components/custom_button.dart';
 import 'package:flutter/material.dart';
 
-import '../appointment.dart';
+import '../../models/appointment.dart';
 
 class AppointmentDetailScreen extends StatelessWidget {
   final Appointment appointment;

@@ -1,8 +1,8 @@
 import 'package:barbershopapp/components/custom_button.dart';
 import 'package:barbershopapp/components/custom_input_field.dart';
 import 'package:barbershopapp/components/custom_text_button.dart';
-import 'package:barbershopapp/screens/login_screen.dart';
-import 'package:barbershopapp/screens/verify_screen.dart';
+import 'package:barbershopapp/screens/auth/login_screen.dart';
+import 'package:barbershopapp/screens/auth/verify_screen.dart';
 import 'package:flutter/material.dart';
 
 class RegisterScreen extends StatelessWidget {

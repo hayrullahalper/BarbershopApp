@@ -2,7 +2,7 @@ import 'package:barbershopapp/components/custom_barber_search_list_tile.dart';
 import 'package:barbershopapp/components/custom_input_field.dart';
 import 'package:flutter/material.dart';
 
-import '../mock_data.dart';
+import '../../data/mock_data.dart';
 import 'choose_barber_screen.dart';
 
 class SearchScreen extends StatelessWidget {

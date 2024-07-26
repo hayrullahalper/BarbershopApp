@@ -1,4 +1,4 @@
-import 'Barber.dart';
+import 'barber.dart';
 
 class Barbershop {
   String _name;

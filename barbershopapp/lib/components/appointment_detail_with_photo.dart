@@ -1,4 +1,4 @@
-import 'package:barbershopapp/appointment.dart';
+import 'package:barbershopapp/models/appointment.dart';
 import 'package:flutter/material.dart';
 
 class AppointmentDetailWithPhoto extends StatelessWidget {

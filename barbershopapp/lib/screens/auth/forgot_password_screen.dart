@@ -1,8 +1,8 @@
-import 'package:barbershopapp/screens/reset_password_verify_screen.dart';
+import 'package:barbershopapp/screens/auth/reset_password_verify_screen.dart';
 import 'package:flutter/material.dart';
 
-import '../components/custom_button.dart';
-import '../components/custom_input_field.dart';
+import '../../components/custom_button.dart';
+import '../../components/custom_input_field.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {
   const ForgotPasswordScreen({super.key});
