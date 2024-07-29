@@ -5,8 +5,15 @@ import 'package:flutter/material.dart';
 import '../../data/mock_data.dart';
 import 'choose_barber_screen.dart';
 
-class SearchScreen extends StatelessWidget {
+class SearchScreen extends StatefulWidget {
   SearchScreen({super.key});
+
+  @override
+  _SearchScreenState createState() => _SearchScreenState();
+}
+
+class _SearchScreenState extends State<SearchScreen> {
+  String searchQuery = "";
 
   @override
   Widget build(BuildContext context) {
@@ -41,32 +48,44 @@ class SearchScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 20),
-                CustomInputField(labelText: "Enter Barbershop Name"),
-                Container(
-                  height: 150,
-                  width: 320,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black, width: 2),
-                    borderRadius: const BorderRadius.only(
-                        bottomLeft: Radius.circular(12),
-                        bottomRight: Radius.circular(12)),
-                  ),
-                  child: ListView.builder(
-                    itemCount: barbershops.length,
-                    itemBuilder: (context, index) {
-                      return CustomBarberSearchListTile(
-                        text: barbershops[index].name,
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
+                CustomInputField(
+                  labelText: "Enter Barbershop Name",
+                  onChanged: (value) {
+                    setState(() {
+                      searchQuery = value;
+                    });
+                  },
+                ),
+                if (searchQuery.isNotEmpty)
+                  Container(
+                    height: 150,
+                    width: 320,
+                    child: ListView.builder(
+                      itemCount: barbershops.length,
+                      itemBuilder: (context, index) {
+                        if (barbershops[index]
+                            .name
+                            .toLowerCase()
+                            .contains(searchQuery.toLowerCase())) {
+                          return CustomBarberSearchListTile(
+                            text: barbershops[index].name,
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
                                   builder: (context) => ChooseBarberScreen(
-                                      barbershop: barbershops[index])));
-                        },
-                      );
-                    },
+                                    barbershop: barbershops[index],
+                                  ),
+                                ),
+                              );
+                            },
+                          );
+                        } else {
+                          return const SizedBox.shrink();
+                        }
+                      },
+                    ),
                   ),
-                )
               ],
             ),
           ),

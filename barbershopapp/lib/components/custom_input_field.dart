@@ -6,12 +6,14 @@ class CustomInputField extends StatefulWidget {
   final String labelText;
   final bool isPhoneNumber;
   final bool isPassword;
+  final Function(String)? onChanged;
 
   const CustomInputField({
     super.key,
     required this.labelText,
     this.isPhoneNumber = false,
     this.isPassword = false,
+    this.onChanged,
   });
 
   @override
@@ -56,6 +58,7 @@ class _CustomInputFieldState extends State<CustomInputField> {
                   ),
                   Expanded(
                     child: TextField(
+                      onChanged: widget.onChanged,
                       controller: phoneController,
                       keyboardType: TextInputType.phone,
                       inputFormatters: <TextInputFormatter>[
@@ -77,6 +80,7 @@ class _CustomInputFieldState extends State<CustomInputField> {
                 ],
               )
             : TextField(
+                onChanged: widget.onChanged,
                 obscureText: widget.isPassword ? _obscureText : false,
                 decoration: InputDecoration(
                   hintText: widget.labelText,

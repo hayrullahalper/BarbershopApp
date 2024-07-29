@@ -14,8 +14,6 @@ class _AppointmentSchedulerScreenState
   int selectedDay = 0;
   String selectedHour = "";
 
-  final List<String> days =
-      List.generate(31, (index) => (index + 1).toString());
   final List<String> hours = [
     '09:45',
     '10:30',
@@ -27,12 +25,16 @@ class _AppointmentSchedulerScreenState
     '15:15'
   ];
 
+  int firstDayOfWeek = 3;
+
+  int totalDaysInMonth = 31;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -43,8 +45,8 @@ class _AppointmentSchedulerScreenState
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            SizedBox(height: 10),
-            Center(
+            const SizedBox(height: 10),
+            const Center(
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
@@ -61,45 +63,50 @@ class _AppointmentSchedulerScreenState
                   crossAxisCount: 7,
                   childAspectRatio: 1,
                 ),
-                itemCount: days.length,
+                itemCount: totalDaysInMonth + firstDayOfWeek,
                 itemBuilder: (context, index) {
-                  return GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        selectedDay = index;
-                      });
-                    },
-                    child: Container(
-                      margin: EdgeInsets.all(4),
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.black),
-                        borderRadius: BorderRadius.circular(8),
-                        color: selectedDay == index
-                            ? Colors.grey[300]
-                            : Colors.white,
-                      ),
-                      child: Center(
-                        child: Text(
-                          days[index],
-                          style: TextStyle(
-                            fontSize: 18,
-                            color: Colors.black,
-                            fontWeight: selectedDay == index
-                                ? FontWeight.bold
-                                : FontWeight.normal,
-                            decoration: selectedDay == index
-                                ? TextDecoration.lineThrough
-                                : null,
+                  if (index < firstDayOfWeek) {
+                    return Container();
+                  } else {
+                    int day = index - firstDayOfWeek + 1;
+                    return GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          selectedDay = day;
+                        });
+                      },
+                      child: Container(
+                        margin: EdgeInsets.all(4),
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.black),
+                          borderRadius: BorderRadius.circular(8),
+                          color: selectedDay == day
+                              ? Colors.grey[300]
+                              : Colors.white,
+                        ),
+                        child: Center(
+                          child: Text(
+                            day.toString(),
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.black,
+                              fontWeight: selectedDay == day
+                                  ? FontWeight.bold
+                                  : FontWeight.normal,
+                              decoration: selectedDay == day
+                                  ? TextDecoration.lineThrough
+                                  : null,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  );
+                    );
+                  }
                 },
               ),
             ),
             SizedBox(height: 10),
-            Text(
+            const Text(
               'Available Hours',
               style: TextStyle(fontSize: 18),
               textAlign: TextAlign.center,
@@ -143,10 +150,7 @@ class _AppointmentSchedulerScreenState
               }).toList(),
             ),
             SizedBox(height: 30),
-            CustomButton(
-              text: "Complete",
-              onPressed: () {},
-            ),
+            CustomButton(text: "Complete", onPressed: () {})
           ],
         ),
       ),
