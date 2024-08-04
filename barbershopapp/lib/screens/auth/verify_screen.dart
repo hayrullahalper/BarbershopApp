@@ -1,5 +1,7 @@
 import 'package:barbershopapp/components/custom_button.dart';
 import 'package:barbershopapp/components/custom_otp_box.dart';
+import 'package:barbershopapp/screens/auth/login_screen.dart';
+import 'package:barbershopapp/services/auth_service.dart';
 import 'package:flutter/material.dart';
 
 class VerifyScreen extends StatefulWidget {
@@ -14,11 +16,15 @@ class _VerifyScreenState extends State<VerifyScreen> {
   final TextEditingController _otpController2 = TextEditingController();
   final TextEditingController _otpController3 = TextEditingController();
   final TextEditingController _otpController4 = TextEditingController();
+  final TextEditingController _otpController5 = TextEditingController();
+  final TextEditingController _otpController6 = TextEditingController();
 
   final FocusNode _otpFocusNode1 = FocusNode();
   final FocusNode _otpFocusNode2 = FocusNode();
   final FocusNode _otpFocusNode3 = FocusNode();
   final FocusNode _otpFocusNode4 = FocusNode();
+  final FocusNode _otpFocusNode5 = FocusNode();
+  final FocusNode _otpFocusNode6 = FocusNode();
 
   @override
   void dispose() {
@@ -26,10 +32,16 @@ class _VerifyScreenState extends State<VerifyScreen> {
     _otpController2.dispose();
     _otpController3.dispose();
     _otpController4.dispose();
+    _otpController5.dispose();
+    _otpController6.dispose();
+
     _otpFocusNode1.dispose();
     _otpFocusNode2.dispose();
     _otpFocusNode3.dispose();
     _otpFocusNode4.dispose();
+    _otpFocusNode5.dispose();
+    _otpFocusNode6.dispose();
+
     super.dispose();
   }
 
@@ -79,7 +91,11 @@ class _VerifyScreenState extends State<VerifyScreen> {
                           _otpController2, _otpFocusNode2, _otpFocusNode3),
                       CustomOTPBox(
                           _otpController3, _otpFocusNode3, _otpFocusNode4),
-                      CustomOTPBox(_otpController4, _otpFocusNode4, null),
+                      CustomOTPBox(
+                          _otpController4, _otpFocusNode4, _otpFocusNode5),
+                      CustomOTPBox(
+                          _otpController5, _otpFocusNode5, _otpFocusNode6),
+                      CustomOTPBox(_otpController6, _otpFocusNode6, null),
                     ],
                   ),
                 ),
@@ -89,7 +105,27 @@ class _VerifyScreenState extends State<VerifyScreen> {
                 child: CustomButton(
                   text: "Verify",
                   fontSize: 18,
-                  onPressed: () {},
+                  onPressed: () async {
+                    var isRegistered = await AuthService.loginWithOtp(
+                        _otpController1.text +
+                            _otpController2.text +
+                            _otpController3.text +
+                            _otpController4.text +
+                            _otpController5.text +
+                            _otpController6.text);
+
+                    if (isRegistered) {
+                      Navigator.pop(context);
+
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => LoginScreen()));
+                    } else {
+                      print("Couldn't Registered");
+                      Navigator.pop(context);
+                    }
+                  },
                 ),
               ),
             ],

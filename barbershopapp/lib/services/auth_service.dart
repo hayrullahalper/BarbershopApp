@@ -37,9 +37,9 @@ class AuthService {
       final user = await _firebaseAuth.signInWithCredential(credential);
 
       if (user.user != null) {
-        return "Success";
+        return true;
       } else {
-        return "Error in OTP login.";
+        return false;
       }
     } on FirebaseAuthException catch (e) {
       return e.message.toString();
@@ -56,6 +56,7 @@ class AuthService {
   }
 
   static Future getAuthenticatedUser() async {
-    return await _firebaseAuth.currentUser;
+    var user = await _firebaseAuth.currentUser;
+    return user;
   }
 }

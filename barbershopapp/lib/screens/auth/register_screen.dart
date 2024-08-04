@@ -3,9 +3,14 @@ import 'package:barbershopapp/components/custom_input_field.dart';
 import 'package:barbershopapp/components/custom_text_button.dart';
 import 'package:barbershopapp/screens/auth/login_screen.dart';
 import 'package:barbershopapp/screens/auth/verify_screen.dart';
+import 'package:barbershopapp/services/auth_service.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 
 class RegisterScreen extends StatelessWidget {
+  TextEditingController _phoneController =
+      MaskedTextController(mask: '(000) 000 00 00');
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +30,7 @@ class RegisterScreen extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text(
+                  const Text(
                     textAlign: TextAlign.left,
                     'REGISTER',
                     style: TextStyle(
@@ -40,9 +45,9 @@ class RegisterScreen extends StatelessWidget {
                   CustomInputField(labelText: "Last Name"),
                   SizedBox(height: 10),
                   CustomInputField(
-                    labelText: "Phone Number",
-                    isPhoneNumber: true,
-                  ),
+                      labelText: "Phone Number",
+                      isPhoneNumber: true,
+                      phoneController: _phoneController),
                   SizedBox(height: 10),
                   CustomInputField(
                     labelText: "Password",
@@ -68,10 +73,22 @@ class RegisterScreen extends StatelessWidget {
                   CustomButton(
                     text: "Register",
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => VerifyScreen()));
+                      //Need to validate number
+                      var phoneNum = _phoneController.text.replaceAll("(", "");
+                      phoneNum = phoneNum.replaceAll(")", "");
+                      phoneNum = phoneNum.replaceAll(" ", "");
+                      phoneNum = "+90" + phoneNum;
+
+                      print(phoneNum);
+
+                      AuthService.sendOTP(phoneNum, (e) {
+                        print("Yanlış Babba");
+                      }, () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => VerifyScreen()));
+                      });
                     },
                     padding: EdgeInsets.zero,
                     fontSize: 20,

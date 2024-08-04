@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 
 class CustomInputField extends StatefulWidget {
   final String labelText;
   final bool isPhoneNumber;
   final bool isPassword;
   final Function(String)? onChanged;
+  final TextEditingController? phoneController;
 
   const CustomInputField({
     super.key,
@@ -14,6 +14,7 @@ class CustomInputField extends StatefulWidget {
     this.isPhoneNumber = false,
     this.isPassword = false,
     this.onChanged,
+    this.phoneController,
   });
 
   @override
@@ -25,14 +26,13 @@ class _CustomInputFieldState extends State<CustomInputField> {
 
   @override
   Widget build(BuildContext context) {
-    var phoneController = MaskedTextController(mask: '(000) 000 00 00');
     var countryCodeController = TextEditingController(text: "+90");
 
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 16),
       child: Container(
         decoration: BoxDecoration(
-          border: Border.all(color: Colors.black, width: 2.0), // Black border
+          border: Border.all(color: Colors.black, width: 2.0),
           borderRadius: BorderRadius.circular(11.0),
         ),
         child: widget.isPhoneNumber
@@ -59,7 +59,7 @@ class _CustomInputFieldState extends State<CustomInputField> {
                   Expanded(
                     child: TextField(
                       onChanged: widget.onChanged,
-                      controller: phoneController,
+                      controller: widget.phoneController,
                       keyboardType: TextInputType.phone,
                       inputFormatters: <TextInputFormatter>[
                         FilteringTextInputFormatter.digitsOnly,

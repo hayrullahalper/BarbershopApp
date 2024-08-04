@@ -39,14 +39,14 @@ class LoginScreen extends StatelessWidget {
                     const SizedBox(
                       height: 20,
                     ),
-                    const CustomInputField(
+                    CustomInputField(
                       labelText: "Phone Number",
                       isPhoneNumber: true,
                     ),
                     const SizedBox(
                       height: 20,
                     ),
-                    const CustomInputField(
+                    CustomInputField(
                       labelText: "Password",
                       isPassword: true,
                     ),

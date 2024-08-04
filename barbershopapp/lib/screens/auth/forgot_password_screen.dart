@@ -40,7 +40,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 15),
-              const CustomInputField(
+              CustomInputField(
                 labelText: "Phone Number",
                 isPhoneNumber: true,
               ),
